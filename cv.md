@@ -44,7 +44,7 @@ My goal is to become a sought-after developer
 
 ---
 
-## Code example:
+## Code example (Calculator logic):
 
 ```javascript
 buttons.forEach((button) => {
