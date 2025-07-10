@@ -1,4 +1,4 @@
-![photo](<../IMG_5117 (2).HEIC>)
+![photo](IMG_5117.jpg)
 
 # Sivkov Igor
 
