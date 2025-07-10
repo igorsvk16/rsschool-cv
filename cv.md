@@ -44,6 +44,94 @@ My goal is to become a sought-after developer
 
 ---
 
+## Code example:
+
+```javascript
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (button.textContent.includes("⇦")) {
+      currentInput = currentInput.slice(0, -1);
+      return updateDisplay(currentInput);
+    }
+    if (button.textContent.includes("C")) {
+      clearAll();
+      return updateDisplay();
+    } else if (button.textContent.includes("=")) {
+      if (
+        num1 === null ||
+        (num1 !== null && operator !== "" && currentInput === "")
+      ) {
+        return;
+      } else if (currentInput !== "" && operator !== "") {
+        num2 = Number(currentInput);
+        currentInput = "";
+        num1 = output.textContent = operate(num1, operator, num2);
+        return clearAll();
+      }
+    } else if (button.textContent.includes(".")) {
+      console.log(currentInput);
+      console.log(!currentInput.includes("."));
+      if (
+        !currentInput.includes(".") &&
+        currentInput !== "" &&
+        endsWithNumber(currentInput)
+      ) {
+        console.log("1");
+        currentInput += button.textContent;
+        return updateDisplay(currentInput);
+      } else {
+        console.log("2");
+        return;
+      }
+    } else if (["+", "-", "*", "/"].includes(button.textContent)) {
+      if (num1 === null && currentInput !== "") {
+        num1 = Number(currentInput);
+        operator = button.textContent;
+        waitForSecondOperand = true;
+        currentInput = "";
+        return;
+      } else if (num1 === null && currentInput === "") {
+        operator = button.textContent;
+        return;
+      } else if (num1 !== null && operator !== "" && currentInput === "") {
+        return (operator = button.textContent);
+      } else if (waitForSecondOperand && currentInput === "") {
+        operator = button.textContent;
+        return;
+      } else {
+        if (operator === "/" && Number(currentInput) === 0) {
+          console.log("1");
+          clearAll();
+          updateDisplay();
+          return alert('"Were you trying to divide by 0???');
+        } else {
+          console.log("2");
+          num2 = Number(currentInput);
+          let result = operate(num1, operator, num2);
+          updateDisplay(result);
+          num1 = result;
+          operator = button.textContent;
+          currentInput = "";
+          waitForSecondOperand = true;
+          return;
+        }
+      }
+    } else {
+      if (waitForSecondOperand) {
+        currentInput = "";
+        waitForSecondOperand = false;
+      }
+      if (currentInput.length < 13) {
+        currentInput += button.textContent;
+        updateDisplay(currentInput);
+      }
+    }
+  });
+});
+```
+
+---
+
 ## Experience
 
 - The most difficult thing from a JS point of view is a [calculator](https://igorsvk16.github.io/Calculator) with all the exceptions worked out and the correct logic
