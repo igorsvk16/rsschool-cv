@@ -60,7 +60,7 @@ My goal is to become a sought-after developer
 
 ## Education
 
-- 2024-2028 Saint-Petersburg State University of Aerospace Instrumentation (SUAI)
+- 2028 Saint-Petersburg State University of Aerospace Instrumentation (SUAI) / Institute of Information Technology and Programming, Applied Computer Science
 
 - The Odin Project (Foundations)
 
