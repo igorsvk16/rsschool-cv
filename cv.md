@@ -152,6 +152,8 @@ buttons.forEach((button) => {
 
 - The Odin Project (Foundations)
 
+- T-Bank JS intensive
+
 ---
 
 ## Languages
