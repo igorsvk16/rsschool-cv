@@ -38,7 +38,7 @@ My goal is to become a sought-after developer
 
 - JS
 - HTML5
-- CSS
+- CSS3
 - Git
 - Python
 

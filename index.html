@@ -4,11 +4,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
+    <header class="header">
+        <div class="container">
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#contacts" class="nav-link">Contacts</a></li>
+                    <li class="nav-item"><a href="#summary" class="nav-link">Summary</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                    <li class="nav-item"><a href="#summary" class="nav-link">Summary</a></li>
+                    <li class="nav-item"><a href="#code" class="nav-link">Code</a></li>
+                    <li class="nav-item"><a href="#courses" class="nav-link">Courses</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
+                    <li class="nav-item"><a href="#english" class="nav-link">English</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container main-container">
+            <section class="section" id="profile">
+                <img src="img/IMG_5117 1to1.jpg" alt="Igor photo" class="igor-photo">
+                <div class="name-position">
+                    <h1 class="section-title main-title">IGOR SIVKOV</h1>
+                    <h2 class="section-my-position">Junior Front-End Developer</h2>
+                </div>
+            </section>
+            <section class="section" id="contacts">
+                <h2 class="section-title">Contacts</h2>
+                <ul>
+                    <li>
+                        <p>Russia, Saint-Petersburg</p>
+                    </li>
+                    <li>
+                        <p>Telegram: @igorsvk</p>
+                    </li>
+                    <li>
+                        <p>Email: igorsvk16@gmail.com</p>
+                    </li>
+                    <li>
+                        <p>GitHub: https://github.com/igorsvk16</p>
+                    </li>
+                    <li>
+                        <p>Discord: sivkoff</p>
+                    </li>
+                    <li>
+                        <p>Phone: 89048665797</p>
+                    </li>
+                </ul>
+            </section>
+            <section class="section" id="summary">
+                <h2 class="section-title">Summary</h2>
+                <p>19 years old, living in St. Petersburg.</p>
+                <p>I am currently actively studying frontend development.
+                    I am also studying according to the plan presented on the website of The Odin Project, at RS School
+                    in the frontend direction and taking an intensive course in JS from T-Bank.
+                    I participate in hackathons and develop my own projects.
+                    I attend thematic meetups.</p>
+                <p>I learn quickly</p>
+                <p>I love learning new information and always complete any task, no matter how complex.
+                </p>
+                <p>My goal is to become a sought-after developer
+                </p>
+            </section>
+            <section class="section" id="skills">
+                <h2 class="section-title">Skills</h2>
+                <ul>
+                    <li>
+                        <p>JS</p>
+                    </li>
+                    <li>
+                        <p>HTML5</p>
+                    </li>
+                    <li>
+                        <p>CSS3</p>
+                    </li>
+                    <li>
+                        <p>Git</p>
+                    </li>
+                    <li>
+                        <p>Python</p>
+                    </li>
+                </ul>
+            </section>
+            <section class="section" id="code">
+                <h2 class="section-title">Code (Calculator logic)</h2>
+                <code>buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (button.textContent.includes("⇦")) {
+      currentInput = currentInput.slice(0, -1);
+      return updateDisplay(currentInput);
+    }
+    if (button.textContent.includes("C")) {
+      clearAll();
+      return updateDisplay();
+    } else if (button.textContent.includes("=")) {
+      if (
+        num1 === null ||
+        (num1 !== null && operator !== "" && currentInput === "")
+      ) {
+        return;
+      } else if (currentInput !== "" && operator !== "") {
+        num2 = Number(currentInput);
+        currentInput = "";
+        num1 = output.textContent = operate(num1, operator, num2);
+        return clearAll();
+      }
+    } else if (button.textContent.includes(".")) {
+      console.log(currentInput);
+      console.log(!currentInput.includes("."));
+      if (
+        !currentInput.includes(".") &&
+        currentInput !== "" &&
+        endsWithNumber(currentInput)
+      ) {
+        console.log("1");
+        currentInput += button.textContent;
+        return updateDisplay(currentInput);
+      } else {
+        console.log("2");
+        return;
+      }
+    } else if (["+", "-", "*", "/"].includes(button.textContent)) {
+      if (num1 === null && currentInput !== "") {
+        num1 = Number(currentInput);
+        operator = button.textContent;
+        waitForSecondOperand = true;
+        currentInput = "";
+        return;
+      } else if (num1 === null && currentInput === "") {
+        operator = button.textContent;
+        return;
+      } else if (num1 !== null && operator !== "" && currentInput === "") {
+        return (operator = button.textContent);
+      } else if (waitForSecondOperand && currentInput === "") {
+        operator = button.textContent;
+        return;
+      } else {
+        if (operator === "/" && Number(currentInput) === 0) {
+          console.log("1");
+          clearAll();
+          updateDisplay();
+          return alert('"Were you trying to divide by 0???');
+        } else {
+          console.log("2");
+          num2 = Number(currentInput);
+          let result = operate(num1, operator, num2);
+          updateDisplay(result);
+          num1 = result;
+          operator = button.textContent;
+          currentInput = "";
+          waitForSecondOperand = true;
+          return;
+        }
+      }
+    } else {
+      if (waitForSecondOperand) {
+        currentInput = "";
+        waitForSecondOperand = false;
+      }
+      if (currentInput.length < 13) {
+        currentInput += button.textContent;
+        updateDisplay(currentInput);
+      }
+    }
+  });
+});</code>
+            </section>
+            <section class="section" id="courses">
+                <h2 class="section-title">Courses</h2>
+                <ul>
 
+                    <li>
+                        <p>The Odin Project (Foundations)
+                        </p>
+                    </li>
+                    <li>
+                        <p>T-Bank JS intensive
+                        </p>
+                    </li>
+                </ul>
+
+            </section>
+            <section class="section" id="projects">
+                <h2 class="section-title">Projects</h2>
+
+                <p>The most difficult thing from a JS point of view is a
+                    <a href="https://igorsvk16.github.io/Calculator">calculator</a> with all the exceptions worked out
+                    and the
+                    correct logic
+                </p>
+                <h4>The other projects are also interesting from a visual effects point of view:</h4>
+                <ul>
+                    <li>
+                        <p><a href="https://igorsvk16.github.io/TOP-Project-Landing-Page/">Landing-Page</a></p>
+                    </li>
+                    <li>
+                        <p><a href="https://igorsvk16.github.io/Project-Etch-a-Sketch-TOP/">Etch-a-Sketch</a>
+                    </li>
+                    <li>
+                        </p>
+                        <p><a href="https://igorsvk16.github.io/Project-Rock-Paper-Scissors/">Rock-Paper-Scissors</a>
+                        </p>
+                    </li>
+                </ul>
+            </section>
+            <section class="section" id="education">
+                <h2 class="section-title">Education</h2>
+                <ul>
+                    <li>
+
+                        <p>2028 Saint-Petersburg State University of Aerospace Instrumentation (SUAI) / Institute of
+                            Information Technology and Programming, Applied Computer Science
+                        </p>
+
+                    </li>
+                </ul>
+            </section>
+            <section class="section" id="languages">
+                <h2 class="section-title">Languages</h2>
+                <ul>
+                    <li>
+                        <p>English - B1
+                    </li>
+                    <li>
+                        </p>
+                        <p>Russian - Native
+                        </p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container footer">
+            <p>&copy;2025 <a href="https://github.com/igorsvk16"> IgorSvk16</a></p>
+            <img src="img/rs-school-logo.svg" alt="rs school logo">
+        </div>
+    </footer>
 </body>
 
 </html>
