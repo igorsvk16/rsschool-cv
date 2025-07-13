@@ -8,6 +8,11 @@
 }
 * {
     box-sizing: border-box;
+
+}
+ul {
+  margin: 0;
+  padding: 0;
 }
 html {
     scroll-behavior: smooth;
@@ -32,21 +37,46 @@ body {
     line-height: 1.5;
     color: #4d2323;
 }
+.container-nav {
+    display: flex;
+    justify-content: center;
+}
 .nav-list {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     list-style: none;
+    flex-wrap: wrap;
 }
+
 .nav-link {
-    padding: 0 20px;
+    padding: 5px 20px;
     line-height: 50px;
-    transition: 0.3s;
+    transition: text-decoration 0.3s;
     color: white;
+    text-decoration: none;
+    border-bottom: 5px solid white;
+    transition: border-bottom-width 0.08s ease;
+    display: inline-block;
+    margin: 15px 0px;
 }
-.container {
+
+.nav-link:hover {
+   border-bottom-width: 0;
+}
+#profile {
+    display: flex;
+    border-bottom: 20px solid #ccc1b5;
+    margin: 30px;
+}
+a {
+    transition: 0.3s;
+    color: #5d7260;
+}
+.main-container {
     max-width: 1440px;
     margin: 0 auto;
+
 }
 .section-my-position {
     margin-top: 20px;
@@ -67,9 +97,11 @@ body {
     letter-spacing: 3px;
     color: #829985;
 }
-.section-item {
+.section li {
     position: relative;
     padding-left: 30px;
+    margin: 0px;
+    list-style: none;
 }
 .section-item a {
     color: #829985;
@@ -79,7 +111,7 @@ body {
 .section-item a:hover {
     color: #4d2323;
 }
-.section-item::before {
+.section li::before {
     content: "";
     position: absolute;
     top: 8px;
@@ -97,6 +129,7 @@ body {
 .section {
     width: 50%;
     padding: 30px;
+    border-bottom: 7px solid #cec6bd ;
 }
 #profile {
     width: 100%;
@@ -107,6 +140,9 @@ body {
     display: flex;
     flex-direction: column;
 }
+pre {
+    overflow-x: auto;
+}
 @media (max-width: 768px) {
     .section {
         width: 100%;
@@ -116,9 +152,6 @@ body {
     text-decoration: none;
     color: #829985;
     transition: color 0.5s;
-}
-.nav-link:hover {
-    color: #5d7260;
 }
 .main-title {
   position: relative;
@@ -147,10 +180,14 @@ body {
 
 .footer .container {
     background-color: #5d7260;
-    padding: 20px;
     display: flex;
     justify-content: space-between;
     padding: 20px 40px;
+    color: aliceblue;
+    max-width: 100%;
+}
+.footer a {
+    color: white;
 }
 .footer img {
     width: 200px;
